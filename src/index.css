@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-space: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-script: 'Caveat', cursive;
+
+  --color-deep-navy: #050B1B;
+  --color-dark-blue: #0B1630;
+  --color-electric-blue: #1677FF;
+  --color-cyan-accent: #00D9FF;
+  --color-purple-accent: #7B3FF2;
+  --color-muted-text: #AAB6D3;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #050B1B;
+    color: #ffffff;
+    font-family: var(--font-sans);
+    overflow: hidden;
+  }
+
+  /* Tabular numbers for timer so widths don't jump */
+  .tabular-digits {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+/* Neon Glow Utilities */
+.glow-electric {
+  text-shadow: 0 0 10px rgba(22, 119, 255, 0.8), 0 0 25px rgba(22, 119, 255, 0.4), 0 0 50px rgba(0, 217, 255, 0.3);
+}
+
+.glow-purple {
+  text-shadow: 0 0 10px rgba(123, 63, 242, 0.8), 0 0 25px rgba(123, 63, 242, 0.4);
+}
+
+.glow-white {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9), 0 0 30px rgba(22, 119, 255, 0.6);
+}
+
+.box-glow-blue {
+  box-shadow: 0 0 25px -5px rgba(22, 119, 255, 0.5), 0 0 10px rgba(0, 217, 255, 0.3), inset 0 0 15px rgba(22, 119, 255, 0.2);
+}
+
+.box-glow-purple {
+  box-shadow: 0 0 30px -5px rgba(123, 63, 242, 0.6), 0 0 12px rgba(123, 63, 242, 0.4), inset 0 0 20px rgba(123, 63, 242, 0.25);
+}
+
+.box-glow-dual {
+  box-shadow: 0 0 35px -5px rgba(22, 119, 255, 0.4), 0 0 25px rgba(123, 63, 242, 0.35), inset 0 0 20px rgba(22, 119, 255, 0.2);
+}
+
+.border-glow-dual {
+  border-image: linear-gradient(135deg, #00D9FF 0%, #1677FF 35%, #7B3FF2 80%, #C084FC 100%) 1;
+}
+
+/* Futuristic HUD cut corners */
+.hud-clip {
+  clip-path: polygon(
+    18px 0%, 
+    calc(100% - 18px) 0%, 
+    100% 18px, 
+    100% calc(100% - 18px), 
+    calc(100% - 18px) 100%, 
+    18px 100%, 
+    0% calc(100% - 18px), 
+    0% 18px
+  );
+}
+
+.hud-clip-sm {
+  clip-path: polygon(
+    10px 0%, 
+    calc(100% - 10px) 0%, 
+    100% 10px, 
+    100% calc(100% - 10px), 
+    calc(100% - 10px) 100%, 
+    10px 100%, 
+    0% calc(100% - 10px), 
+    0% 10px
+  );
+}
+
+/* Radar & Circular Orbit Animation */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 25px rgba(22, 119, 255, 0.6), 0 0 45px rgba(123, 63, 242, 0.4);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 45px rgba(0, 217, 255, 0.8), 0 0 70px rgba(123, 63, 242, 0.7);
+  }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(1000%); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-spin-reverse {
+  animation: spinReverse 15s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Subtle grid line backdrop */
+.cyber-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(22, 119, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(22, 119, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Custom scrollbars for modal/admin */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(5, 11, 27, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(22, 119, 255, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 217, 255, 0.6);
+}
