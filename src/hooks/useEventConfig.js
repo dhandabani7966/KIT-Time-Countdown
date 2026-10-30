@@ -20,7 +20,7 @@ export const DEFAULT_CONFIG = {
   collegeLogoAlt: '/assets/kit-logo-blue.png',
   ieeeLogo: '/assets/ieee-student-branch.png',
   ieeextremeLogo: '/assets/ieeextreme-logo.png',
-  campusPhoto: '/assets/campus-clean.png',
+  campusPhoto: '/assets/college-campus.jpg',
   centerEmblem: '/assets/center-emblem.png',
   soundEnabled: true,
 };
